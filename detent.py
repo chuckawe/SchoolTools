@@ -33,10 +33,11 @@ for row in culture:
     elif row [4] == "Sent Out":
     	# This means we have a Send Out
     	dates[date][stu_id][2] +=1
-
+# elif
     
     n += 1
 
+print dates
 
 # Placeholder for reading in of lateness data
 # 
@@ -46,16 +47,15 @@ reader.close()
 
 # Discipline Policy enforced in this part of code
 from collections import Counter
-dates[date][stu_id] = set(students)
 # Loop over dates
 for date in dates.keys():
     # Loop over students for that day
-    for i in stu_id:
-        print date, Counter(students)
-    	
+    print date, len(dates[date].keys())
+    # Loop over student and group them into behaviors
+    
     pass
 
-# Used to save header info
+# Used to save header info for writing new file
 #    if rownum == 0:
 #        header = row
 #    else:
