@@ -38,13 +38,8 @@ for row in culture:
         
     
     n += 1
-    #behaviors.append(row[4])
-	#whodunit.append(row[1])
 
 print dates
-	
-#print behaviors
-#print whodunit
 
 
 # Placeholder for reading in of lateness data
@@ -61,6 +56,8 @@ rownum = 0
 # Loop over dates
 for date in dates.keys():
     # Loop over students for that day
+    if stu_id in dates.[date]:
+    	
     pass
 
 # Used to save header info
