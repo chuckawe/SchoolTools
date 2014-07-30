@@ -23,7 +23,7 @@ for row in culture:
     # Check if Student is already stored
     if stu_id not in dates[date].keys():
         dates[date][stu_id] = [0, 0, 0, False, True] # [ nDemerits, nAutoDTs, nSendOuts, If Late, If Late Egreg   ]
-	
+
     if row[5] == 'Demeritable Behaviors':
         # This means we have a demerit
         dates[date][stu_id][0] += 1
@@ -33,34 +33,26 @@ for row in culture:
     elif row [4] == "Sent Out":
     	# This means we have a Send Out
     	dates[date][stu_id][2] +=1
-    
-    
-        
+
     
     n += 1
-    #behaviors.append(row[4])
-	#whodunit.append(row[1])
-
-print dates
-	
-#print behaviors
-#print whodunit
 
 
 # Placeholder for reading in of lateness data
 # 
 
 
-
 reader.close()
 
-
-
 # Discipline Policy enforced in this part of code
-rownum = 0
+from collections import Counter
+dates[date][stu_id] = set(students)
 # Loop over dates
 for date in dates.keys():
     # Loop over students for that day
+    for i in stu_id:
+        print date, Counter(students)
+    	
     pass
 
 # Used to save header info
