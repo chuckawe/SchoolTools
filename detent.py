@@ -4,20 +4,27 @@ import csv
 reader=open('culture-analysis (1).csv', 'rb')
 culture = csv.reader(reader, delimiter=',')
 
-dates =[]
 # date listing of culture
-behaviors =[]	
+dates ={}
 # listing of behaviors committed
-whodunit =[]
+# behaviors =[]	
 # listing of IDs
+# whodunit =[]
+n=0
 for row in culture:
-	dates.append(row[8])
-	behaviors.append(row[4])
-	whodunit.append(row[1])
+    if n>100: break
+    date = row[8]
+    stud_id = row[1]
+    if date not in dates.keys():
+        dates[date] = {}
+        
+    if stud_id not in date[dates].keys():
+        dates[dates][stud_id] = []
+        
+        
+        	
 	
 print dates
-print behaviors
-print whodunit
 	
 reader.close()
 
