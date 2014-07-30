@@ -3,28 +3,7 @@
 import csv
 reader=open('culture-analysis (1).csv', 'rb')
 culture = csv.reader(reader, delimiter=',')
-
-<<<<<<< HEAD
-# date listing of culture
-dates ={}
-# listing of behaviors committed
-# behaviors =[]	
-# listing of IDs
-# whodunit =[]
-n=0
-for row in culture:
-    if n>100: break
-    date = row[8]
-    stud_id = row[1]
-    if date not in dates.keys():
-        dates[date] = {}
-        
-    if stud_id not in date[dates].keys():
-        dates[dates][stud_id] = []
-        
-        
         	
-=======
 # date dictionary
 dates = {}
 # listing of behaviors committed
@@ -43,15 +22,19 @@ for row in culture:
     
     # Check if Student is already stored
     if stu_id not in dates[date].keys():
-        dates[date][stu_id] = [0, 0, 0, 0, False] # [ nDemerits, nUniViolations, nAutoDTs, nSendOuts, If Late   ]
->>>>>>> dc477eff368bfaf9c402ea64a8810be5414a485c
+        dates[date][stu_id] = [0, 0, 0, False, True] # [ nDemerits, nAutoDTs, nSendOuts, If Late, If Late Egreg   ]
 	
     if row[5] == 'Demeritable Behaviors':
         # This means we have a demerit
         dates[date][stu_id][0] += 1
-    elif row[4] == "Uniform":
-        # This means we have a uniform violation
+    elif row[5] == "Auto-Detention":
+        # This means we have a Auto DT assigned 
         dates[date][stu_id][1] += 1
+    elif row [4] == "Sent Out":
+    	# This means we have a Send Out
+    	dates[date][stu_id][2] +=1
+    
+    
         
     
     n += 1
@@ -59,9 +42,7 @@ for row in culture:
 	#whodunit.append(row[1])
 
 print dates
-<<<<<<< HEAD
 	
-=======
 #print behaviors
 #print whodunit
 
@@ -71,7 +52,6 @@ print dates
 
 
 
->>>>>>> dc477eff368bfaf9c402ea64a8810be5414a485c
 reader.close()
 
 
