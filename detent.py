@@ -56,7 +56,7 @@ for date in dates.keys():
             nSendOuts= dates[date][stu_id][2]
             print date, stu_id, nDemerits, nAutoDTs, nSendOuts
 
-for stu_id in dates[date].keys():
+# for stu_id in dates[date].keys():
     x = sum(dates[date][stu_id][0])
     print x
 
