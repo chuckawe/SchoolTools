@@ -6,10 +6,7 @@ culture = csv.reader(reader, delimiter=',')
         	
 # date dictionary
 dates = {}
-# listing of behaviors committed
-#behaviors =[]	
-# listing of IDs
-#whodunit =[]
+
 n = 0
 for row in culture:
     if n>100: break
@@ -19,7 +16,7 @@ for row in culture:
     # Check if date is already stored
     if date not in dates.keys():
 	    dates[date] = {}
-    
+
     # Check if Student is already stored
     if stu_id not in dates[date].keys():
         dates[date][stu_id] = [0, 0, 0, False, True] # [ nDemerits, nAutoDTs, nSendOuts, If Late, If Late Egreg   ]
@@ -43,17 +40,30 @@ print dates
 # 
 
 
-reader.close()
-
 # Discipline Policy enforced in this part of code
-from collections import Counter
 # Loop over dates
 for date in dates.keys():
-    # Loop over students for that day
+    # Total students
     print date, len(dates[date].keys())
+
+print 'hello'
+n=0
+# Loop over dates and returns total for each student
+for date in dates.keys():
+    for stu_id in dates[date].keys():
+            nDemerits= dates[date][stu_id][0]
+            nAutoDTs= dates[date][stu_id][1]
+            nSendOuts= dates[date][stu_id][2]
+            print date, stu_id, nDemerits, nAutoDTs, nSendOuts
+
+# for stu_id in dates[date].keys():
+    x = sum(dates[date][stu_id][0])
+    print x
+
+# [dates[date][stu_id][x] for x in dates[date].keys()]
+
     # Loop over student and group them into behaviors
-    
-    pass
+
 
 # Used to save header info for writing new file
 #    if rownum == 0:
