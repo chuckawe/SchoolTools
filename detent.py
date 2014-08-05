@@ -48,6 +48,8 @@ for date in dates.keys():
 
 print 'hello'
 n=0
+
+
 # Loop over dates and returns total for each student
 for date in dates.keys():
     for stu_id in dates[date].keys():
@@ -56,6 +58,13 @@ for date in dates.keys():
             nSendOuts= dates[date][stu_id][2]
             print date, stu_id, nDemerits, nAutoDTs, nSendOuts
 
+for date in dates.keys():
+    for stu_id in dates[date].keys():
+        for behave in dates[date][stu_id]:
+            if [0]>= 3:
+                print 'Hello'
+            else:
+                print 'no'
 
 
 # for stu_id in dates[date].keys():
