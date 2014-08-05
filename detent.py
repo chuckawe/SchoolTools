@@ -9,7 +9,7 @@ dates = {}
 
 n = 0
 for row in culture:
-    if n>500: break
+    if n>50: break
     date = row[8]
     stu_id = row[1]
     
@@ -31,7 +31,7 @@ for row in culture:
     	# This means we have a Send Out
     	dates[date][stu_id][2] +=1
     
-    n += 1
+n += 1
 
 print dates
 
@@ -48,11 +48,15 @@ for date in dates.keys():
 print 'hello'
 
 
+
 # Loop over dates and returns total for each student
 for date in dates.keys():
     nthdemPerDay = 0
     nthsentPerDay =0
+    nthdetPerDay =0
+    stnum=0
     for stu_id in dates[date].keys():
+            studentDate ={}
             nDemerits= dates[date][stu_id][0]
             nAutoDTs= dates[date][stu_id][1]
             nSendOuts= dates[date][stu_id][2]
@@ -61,8 +65,20 @@ for date in dates.keys():
                 nthdemPerDay +=1
             if nSendOuts >=2:
                 nthsentPerDay +=1
+            if nAutoDTs >0:
+                nthdetPerDay =+1
+            if stu_id not in studentDate.keys():
+                studentDate[stu_id]=[]
+                studentDate[stu_id].append(date)
+            elif stu_id in studentDate.keys:
+                for stu_id in studentDate[stu_id]:
+                    stnum =+1
+
+            print len(studentDate.keys()), stnum, 
+
     print 'For day,', date ,'there were' ,nthdemPerDay ,'students with 3+ Dem'
     print 'For day,', date ,'there were' ,nthsentPerDay ,'students sent out more than once'
+    print 'For day,', date ,'there were' ,nthdetPerDay ,'students given Auto DT'
 
 
 
