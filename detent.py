@@ -55,26 +55,29 @@ for date in dates.keys():
     nthsentPerDay =0
     nthdetPerDay =0
     stnum=0
+    DEM = raw_input('What should demerit limit be\n')
     for stu_id in dates[date].keys():
-            studentDate ={}
+        #            studentDate ={}
             nDemerits= dates[date][stu_id][0]
             nAutoDTs= dates[date][stu_id][1]
             nSendOuts= dates[date][stu_id][2]
             print date, stu_id, nDemerits, nAutoDTs, nSendOuts
-            if nDemerits >=3:
+    print DEM
+    continue
+            if nDemerits >= DEM:
                 nthdemPerDay +=1
             if nSendOuts >=2:
                 nthsentPerDay +=1
             if nAutoDTs >0:
                 nthdetPerDay =+1
-            if stu_id not in studentDate.keys():
-                studentDate[stu_id]=[]
-                studentDate[stu_id].append(date)
-            elif stu_id in studentDate.keys:
-                for stu_id in studentDate[stu_id]:
-                    stnum =+1
+                #            if stu_id not in studentDate.keys():
+                #                studentDate[stu_id]=[]
+#                studentDate[stu_id].append(date)
+#           elif stu_id in studentDate.keys:
+#               for stu_id in studentDate[stu_id]:
+#                   stnum =+1
 
-            print len(studentDate.keys()), stnum, 
+#            print len(studentDate.keys()), stnum,
 
     print 'For day,', date ,'there were' ,nthdemPerDay ,'students with 3+ Dem'
     print 'For day,', date ,'there were' ,nthsentPerDay ,'students sent out more than once'
