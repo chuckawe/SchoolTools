@@ -47,14 +47,15 @@ for date in dates.keys():
     print date, len(dates[date].keys())
 
 print 'hello'
-n=0
+
 # Loop over dates and returns total for each student
 for date in dates.keys():
     for stu_id in dates[date].keys():
-            nDemerits= dates[date][stu_id][0]
-            nAutoDTs= dates[date][stu_id][1]
-            nSendOuts= dates[date][stu_id][2]
-            print date, stu_id, nDemerits, nAutoDTs, nSendOuts
+        nDemerits= dates[date][stu_id][0]
+        nAutoDTs= dates[date][stu_id][1]
+        nSendOuts= dates[date][stu_id][2]
+
+        print date, stu_id, nDemerits, nAutoDTs, nSendOuts
 
 # for stu_id in dates[date].keys():
     x = sum(dates[date][stu_id][0])
