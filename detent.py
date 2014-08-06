@@ -21,7 +21,7 @@ for row in culture:
     if stu_id not in dates[date].keys():
         dates[date][stu_id] = [0, 0, 0, False, True] # [ nDemerits, nAutoDTs, nSendOuts, If Late, If Late Egreg   ]
 
-    if row[5] == 'Demeritable Behaviors':
+    if row[5] == "Demeritable Behaviors":
         # This means we have a demerit
         dates[date][stu_id][0] += 1
     elif row[5] == "Auto-Detention":
@@ -33,7 +33,7 @@ for row in culture:
     
 n += 1
 
-print dates
+#print dates
 
 
 # Placeholder for reading in of lateness data
@@ -41,47 +41,47 @@ print dates
 
 # Discipline Policy enforced in this part of code
 # Loop over dates
-for date in dates.keys():
-    #Total stud/day
-    print date, len(dates[date].keys())
+#for date in dates.keys():
 
-print 'hello'
+#print 'hello'
 
 
 
 # Loop over dates and returns total for each student
 for date in dates.keys():
-    nthdemPerDay = 0
-    nthsentPerDay =0
-    nthdetPerDay =0
-    stnum=0
-    DEM = raw_input('What should demerit limit be\n')
+    #Total students/day
+#    print date, len(dates[date].keys())
+    stnum=[0,0,0,0] # [nthdemPerDay, nthsentPerDay, nthdetPerDay]
+#    DEM = raw_input('What should demerit limit be\n')
     for stu_id in dates[date].keys():
-        #            studentDate ={}
+#           studentDate ={}
             nDemerits= dates[date][stu_id][0]
-            nAutoDTs= dates[date][stu_id][1]
             nSendOuts= dates[date][stu_id][2]
-            print date, stu_id, nDemerits, nAutoDTs, nSendOuts
-    print DEM
-    continue
-            if nDemerits >= DEM:
-                nthdemPerDay +=1
-            if nSendOuts >=2:
-                nthsentPerDay +=1
+            nAutoDTs= dates[date][stu_id][1]
+            #print date, stu_id, nDemerits, nSendOuts, nAutoDTs
+            if nDemerits >=3:
+                stnum[0] += 1
+                    #checks for 3+
+            if nSendOuts >1:
+                stnum[1] +=1
+            elif nSendOuts >0:
+                stnum[3] +=1
+                    #checks sendout 2 or more
             if nAutoDTs >0:
-                nthdetPerDay =+1
-                #            if stu_id not in studentDate.keys():
-                #                studentDate[stu_id]=[]
+                stnum[2] +=1
+                    #checks given Auto
+                    
+#            if stu_id not in studentDate.keys():
+#                studentDate[stu_id]=[]
 #                studentDate[stu_id].append(date)
 #           elif stu_id in studentDate.keys:
 #               for stu_id in studentDate[stu_id]:
 #                   stnum =+1
-
 #            print len(studentDate.keys()), stnum,
 
-    print 'For day,', date ,'there were' ,nthdemPerDay ,'students with 3+ Dem'
-    print 'For day,', date ,'there were' ,nthsentPerDay ,'students sent out more than once'
-    print 'For day,', date ,'there were' ,nthdetPerDay ,'students given Auto DT'
+    print 'For day,', date ,'there were' ,stnum[0] ,'student(s) with 3+ Dem'
+    print 'For day,', date ,'there were' ,stnum[3] ,'student(s) sent out,', stnum[1], 'more than once'
+    print 'For day,', date ,'there were' ,stnum[2] ,'student(s) given Auto DT'
 
 
 
