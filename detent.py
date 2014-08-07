@@ -9,7 +9,7 @@ dates = {}
 
 n = 0
 for row in culture:
-    if n>50: break
+    if n>5000: break
     date = row[8]
     stu_id = row[1]
     
@@ -24,10 +24,10 @@ for row in culture:
     if row[5] == "Demeritable Behaviors":
         # This means we have a demerit
         dates[date][stu_id][0] += 1
-    elif row[5] == "Auto-Detention":
+    elif row[5] == "Auto-Detention" or row[4] == "Missed DT":
         # This means we have a Auto DT assigned 
         dates[date][stu_id][1] += 1
-    elif row [4] == "Sent out":
+    elif row [4] == "Sent out" or "Sent out - Teacher follow up":
     	# This means we have a Send Out
     	dates[date][stu_id][2] +=1
     
@@ -50,22 +50,23 @@ n += 1
 # Loop over dates and returns total for each student
 for date in dates.keys():
     #Total students/day
-#    print date, len(dates[date].keys())
-    stnum=[0,0,0,0] # [nthdemPerDay, nthsentPerDay, nthdetPerDay]
+    stnum=[0,0,0,0,0] # [nthdemPerDay, nthsentPerDay, nthdetPerDay,Demcap,SentCap]
 #    DEM = raw_input('What should demerit limit be\n')
     for stu_id in dates[date].keys():
 #           studentDate ={}
             nDemerits= dates[date][stu_id][0]
             nSendOuts= dates[date][stu_id][2]
             nAutoDTs= dates[date][stu_id][1]
-            #print date, stu_id, nDemerits, nSendOuts, nAutoDTs
+            print date, stu_id, nDemerits, nSendOuts, nAutoDTs
             if nDemerits >=3:
                 stnum[0] += 1
+            elif nDemerits >0:
+                stnum[3] += 1
                     #checks for 3+
             if nSendOuts >1:
                 stnum[1] +=1
             elif nSendOuts >0:
-                stnum[3] +=1
+                stnum[4] +=1
                     #checks sendout 2 or more
             if nAutoDTs >0:
                 stnum[2] +=1
@@ -78,9 +79,9 @@ for date in dates.keys():
 #               for stu_id in studentDate[stu_id]:
 #                   stnum =+1
 #            print len(studentDate.keys()), stnum,
-
-    print 'For day,', date ,'there were' ,stnum[0] ,'student(s) with 3+ Dem'
-    print 'For day,', date ,'there were' ,stnum[3] ,'student(s) sent out,', stnum[1], 'more than once'
+    print date, len(dates[date].keys())
+    print 'For day,', date ,'there were' ,stnum[3] ,'student(s) given a Dem,', stnum[0], 'given 3+ for the day'
+    print 'For day,', date ,'there were' ,stnum[4] ,'student(s) sent out,', stnum[1], 'sent out more than once'
     print 'For day,', date ,'there were' ,stnum[2] ,'student(s) given Auto DT'
 
 
