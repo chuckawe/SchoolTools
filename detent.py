@@ -57,7 +57,7 @@ for date in dates.keys():
             nDemerits= dates[date][stu_id][0]
             nSendOuts= dates[date][stu_id][2]
             nAutoDTs= dates[date][stu_id][1]
-            print date, stu_id, nDemerits, nSendOuts, nAutoDTs
+#           print date, stu_id, nDemerits, nSendOuts, nAutoDTs
             if nDemerits >=3:
                 stnum[0] += 1
             elif nDemerits >0:
@@ -83,6 +83,19 @@ for date in dates.keys():
     print 'For day,', date ,'there were' ,stnum[3] ,'student(s) given a Dem,', stnum[0], 'given 3+ for the day'
     print 'For day,', date ,'there were' ,stnum[4] ,'student(s) sent out,', stnum[1], 'sent out more than once'
     print 'For day,', date ,'there were' ,stnum[2] ,'student(s) given Auto DT'
+
+listFile = open('Culturepull.csv','wb')
+headerStr = 'Date, StudentID,Demerits, Sendouts, Detentions'
+
+listFile.write(headerStr+'\n')
+
+
+for date in dates.keys():
+    for stu_id in dates[date].keys():
+    #'Date, StudentID,Demerits, Sendouts, Detentions'
+        lineStr = '%s,%s,%i,%i,%i' % (date,stu_id,dates[date][stu_id][0],dates[date][stu_id][2],dates[date][stu_id][1])
+        listFile.write(lineStr+'\n')
+listFile.close()
 
 
 
