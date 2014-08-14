@@ -7,6 +7,8 @@ culture = csv.reader(reader, delimiter=',')
 # date dictionary
 dates = {}
 
+detgiv ={}
+
 n = 0
 for row in culture:
     if n>5000: break
@@ -20,10 +22,14 @@ for row in culture:
     # Check if Student is already stored
     if stu_id not in dates[date].keys():
         dates[date][stu_id] = [0, 0, 0, False, True] # [ nDemerits, nAutoDTs, nSendOuts, If Late, If Late Egreg   ]
+        detgiv[stu_id]=[0, 0, 0, 0, 0] # [Gum/Eating/NonWater,Talking]
 
     if row[5] == "Demeritable Behaviors":
         # This means we have a demerit
         dates[date][stu_id][0] += 1
+    if row[4] == "Gum/Eating":
+        # This means we have a demerit
+        [detgiv][stu_id][0] +=6
     elif row[5] == "Auto-Detention" or row[4] == "Missed DT":
         # This means we have a Auto DT assigned 
         dates[date][stu_id][1] += 1
@@ -46,33 +52,36 @@ n += 1
 #print 'hello'
 
 
-
 # Loop over dates and returns total for each student
 for date in dates.keys():
     #Total students/day
     stnum=[0,0,0,0,0] # [nthdemPerDay, nthsentPerDay, nthdetPerDay,Demcap,SentCap]
-    behpts=[0,0,0,0,0] # [Gum/Eating/NonWater,Talking]
+#    detgiv[stu_id]=[True,0]
+
 #    DEM = raw_input('What should demerit limit be\n')
     for stu_id in dates[date].keys():
-#           studentDate ={}
+#           frdet=detgiv[stu_id][0]# Detention Friday, Saturday
+#           frhdet=detgiv[stu_id][1]# Detention Friday hour
             nDemerits= dates[date][stu_id][0]
             nSendOuts= dates[date][stu_id][2]
             nAutoDTs= dates[date][stu_id][1]
 #           print date, stu_id, nDemerits, nSendOuts, nAutoDTs
             if nDemerits >=3:
                 stnum[0] += 1
+#            if nDemerits >=6:
+#                detgiv[stu_id][0]+= 1
             elif nDemerits >0:
                 stnum[3] += 1
-                    #checks for 3+
+                #checks for 3+
             if nSendOuts >1:
                 stnum[1] +=1
             elif nSendOuts >0:
                 stnum[4] +=1
-                    #checks sendout 2 or more
+                #checks sendout 2 or more
             if nAutoDTs >0:
                 stnum[2] +=1
                     #checks given Auto
-                    
+        
 #            if stu_id not in studentDate.keys():
 #                studentDate[stu_id]=[]
 #                studentDate[stu_id].append(date)
@@ -86,15 +95,15 @@ for date in dates.keys():
     print 'For day,', date ,'there were' ,stnum[2] ,'student(s) given Auto DT'
 
 listFile = open('Culturepull.csv','wb')
-headerStr = 'Date, StudentID,Demerits, Sendouts, Detentions'
+headerStr = 'Date, StudentID,Demerits, Sendouts, Detentions, Friday, Hours'
 
 listFile.write(headerStr+'\n')
 
 
 for date in dates.keys():
     for stu_id in dates[date].keys():
-    #'Date, StudentID,Demerits, Sendouts, Detentions'
-        lineStr = '%s,%s,%i,%i,%i' % (date,stu_id,dates[date][stu_id][0],dates[date][stu_id][2],dates[date][stu_id][1])
+    #'Date, StudentID,Demerits, Sendouts, Detentions, Friday, Hours'
+        lineStr = '%s,%s,%i,%i,%i,%s' % (date,stu_id,dates[date][stu_id][0],dates[date][stu_id][2],dates[date][stu_id][1],[stu_id][detgiv][0])
         listFile.write(lineStr+'\n')
 listFile.close()
 
