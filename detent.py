@@ -51,6 +51,7 @@ n += 1
 for date in dates.keys():
     #Total students/day
     stnum=[0,0,0,0,0] # [nthdemPerDay, nthsentPerDay, nthdetPerDay,Demcap,SentCap]
+    behpts=[0,0,0,0,0] # [Gum/Eating/NonWater,Talking]
 #    DEM = raw_input('What should demerit limit be\n')
     for stu_id in dates[date].keys():
 #           studentDate ={}
@@ -79,7 +80,7 @@ for date in dates.keys():
 #               for stu_id in studentDate[stu_id]:
 #                   stnum =+1
 #            print len(studentDate.keys()), stnum,
-    print date, len(dates[date].keys())
+    print date, len(dates[date].keys()), 'Students with a behavior'
     print 'For day,', date ,'there were' ,stnum[3] ,'student(s) given a Dem,', stnum[0], 'given 3+ for the day'
     print 'For day,', date ,'there were' ,stnum[4] ,'student(s) sent out,', stnum[1], 'sent out more than once'
     print 'For day,', date ,'there were' ,stnum[2] ,'student(s) given Auto DT'
