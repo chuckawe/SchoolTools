@@ -7,7 +7,7 @@ culture = csv.reader(reader, delimiter=',')
 # date dictionary
 dates = {}
 
-detgiv ={}
+ptsgiv ={}
 
 n = 0
 for row in culture:
@@ -22,14 +22,14 @@ for row in culture:
     # Check if Student is already stored
     if stu_id not in dates[date].keys():
         dates[date][stu_id] = [0, 0, 0, False, True] # [ nDemerits, nAutoDTs, nSendOuts, If Late, If Late Egreg   ]
-        detgiv[stu_id]=[0, 0, 0, 0, 0] # [Gum/Eating/NonWater,Talking]
+        giv[stu_id]=[0, 0, 0, 0, 0] # [Behaves worth 6, ]
 
     if row[5] == "Demeritable Behaviors":
         # This means we have a demerit
         dates[date][stu_id][0] += 1
-    if row[4] == "Gum/Eating":
+    if row[4] == "Gum/Eating" or "Disrupting Class" or "Disrespect" or "Not Following Directions" or "Unprepared" or "Morning Unprepared" or "Urgency/Purpose":
         # This means we have a demerit
-        detgiv[stu_id][0] +=6
+        ptsgiv[stu_id][1] +=6
     elif row[5] == "Auto-Detention" or row[4] == "Missed DT":
         # This means we have a Auto DT assigned 
         dates[date][stu_id][1] += 1
@@ -68,13 +68,16 @@ for date in dates.keys():
 #           print date, stu_id, nDemerits, nSendOuts, nAutoDTs
             if nDemerits >=3:
                 stnum[0] += 1
-#            if nDemerits >=6:
-#                detgiv[stu_id][0]+= 1
+            #checks given +3
+            if nDemerits >=6:
+                detgiv[stu_id][0]
             if nDemerits >0:
                 stnum[3] += 1
+            #checks given any dem
                 #checks for 3+
             if nSendOuts >1:
                 stnum[1] +=1
+                #checks any sendout
             if nSendOuts >0:
                 stnum[4] +=1
                 #checks sendout 2 or more
@@ -103,7 +106,7 @@ listFile.write(headerStr+'\n')
 for date in dates.keys():
     for stu_id in dates[date].keys():
     #'Date, StudentID,Demerits, Sendouts, Detentions, Friday, Hours'
-        lineStr = '%s,%s,%i,%i,%i,%s' % (date,stu_id,dates[date][stu_id][0],dates[date][stu_id][2],dates[date][stu_id][1],detgiv[stu_id][0])
+        lineStr = '%s,%s,%i,%i,%i,%s,%i' % (date,stu_id,dates[date][stu_id][0],dates[date][stu_id][2],dates[date][stu_id][1],detgiv[stu_id][0], detgiv[stu_id][1])
         listFile.write(lineStr+'\n')
 listFile.close()
 
