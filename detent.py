@@ -7,7 +7,7 @@ culture = csv.reader(reader, delimiter=',')
 # date dictionary
 dates = {}
 
-ptsgiv ={}
+detgiv ={}
 
 n = 0
 for row in culture:
@@ -22,14 +22,14 @@ for row in culture:
     # Check if Student is already stored
     if stu_id not in dates[date].keys():
         dates[date][stu_id] = [0, 0, 0, False, True] # [ nDemerits, nAutoDTs, nSendOuts, If Late, If Late Egreg   ]
-        giv[stu_id]=[0, 0, 0, 0, 0] # [Behaves worth 6, ]
+        detgiv[stu_id]=[0, 0, 0, 0, 0] # [Behaves worth 6, ]
 
     if row[5] == "Demeritable Behaviors":
         # This means we have a demerit
         dates[date][stu_id][0] += 1
     if row[4] == "Gum/Eating" or "Disrupting Class" or "Disrespect" or "Not Following Directions" or "Unprepared" or "Morning Unprepared" or "Urgency/Purpose":
         # This means we have a demerit
-        ptsgiv[stu_id][1] +=6
+        detgiv[stu_id][1] +=6
     elif row[5] == "Auto-Detention" or row[4] == "Missed DT":
         # This means we have a Auto DT assigned 
         dates[date][stu_id][1] += 1
