@@ -1,0 +1,119 @@
+\documentclass [] {report}
+\usepackage[portrait,lmargin=1cm,rmargin=1cm,tmargin=2cm,bmargin=2cm]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage[absolute]{textpos}
+\usepackage{caption}
+\usepackage{tabularx}
+
+\usepackage{booktabs}
+%\setlength{\heavyrulewidth}{0.12em}
+\captionsetup{format=plain,labelformat=empty,justification=centering, font=Large, aboveskip=1pt}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand*\footnoterule{}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Directory for graphics
+\graphicspath{{graphics/},{../graphics/}}
+
+\lhead{
+\begin{tabular}{l}
+LOGO
+\end{tabular}
+%\begin{tabular}{l l}
+%\multirow{6}{*}{\includegraphics[scale=0.3]{DPPS}} & \hspace{1pt} \\
+%& \sc{{\bf \large Democracy Prep Charter School}} \\
+%& 207 W. 133rd St. New York, NY 10037 \\
+%& (212) 281-1248 \\
+%&  Campus Director: Lisa Friscia\\
+%& \hspace{1pt}
+%\end{tabular}
+}
+
+%\chead{\Huge{\sc Official\\Transcript}}
+
+\rhead{
+\large
+\begin{tabular}{l l}
+Student Name: & FIRSTNAME LASTNAME \\
+Student ID: & STUID \\
+Grade: & GRADE \\
+DOB: & DATEOFBIRTH \\
+%Address: & STREET\\
+% &CITY, STATE ZIP \\
+\end{tabular}
+}
+
+%\cfoot{\textcolor{Goldenrod}{\it \Large Work Hard. Go to College Change the World}}
+\cfoot{
+%\begin{tabular}{c}
+SCHOOLADDRESS
+%Campus Director: Natasha Trivers\\
+%\end{tabular}
+}
+
+\begin{document}
+
+%WATERMARK
+
+
+% Official Transcript "Watermark"
+%\begin{textblock}{40}(1.0,5.0)
+%\includegraphics[]{OffTrans}
+%\end{textblock}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Coursework Portion of Transcript
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Header
+% Do not adjust Y position without adjusting examinations header as well
+%\begin{textblock}{width}(X,Y) 
+\begin{textblock}{8}(3.3,2.0) % Use this for portrait layout
+{\huge Coursework}
+\end{textblock}
+
+% Each of the textblocks below correspond to a year in 
+% a student's academic record.
+
+\begin{textblock}{8.7}(1.0,2.5)
+%COURSEWORKALL
+\end{textblock}
+
+
+%\begin{textblock}{7.5}(9.0,14.0)
+\begin{textblock}{7.5}(9.5,9.0)
+%COURSEWORKSUMMARY
+\end{textblock}
+
+%ELECTIVEFOOTNOTE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Examinations Portion of Transcript
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Header
+\begin{textblock}{10}(10.4,2.0) % Use this for portrait layout
+{\huge Examinations}
+\end{textblock}
+
+% Specific Exams
+% Expected: NYS Regents, AP, SAT and ACT
+
+%EXAMSBYTYPE
+
+% Signature Line
+\begin{textblock}{10}(8,14.8)
+\centering
+\underline{\hspace{2.5in}}\\
+Signature of School Official \& School Seal
+\end{textblock}
+
+\end{document}
