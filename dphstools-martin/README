@@ -1,0 +1,27 @@
+DPHSTools - A set of tools for use by Democracy Prep High School staff
+Author: Brian Martin - bmartin@democracyprep.org
+
+To install: (on OSX)
+
+1) Get package from bitbucket using git: Tutorial: http://rogerdudler.github.io/git-guide/
+git clone https://YOUR_USERNAME@bitbucket.org/btmartin/dphstools
+
+2) Install Python: (Pre-installed is probably fine.)
+Tested on Version 2.7.2 or later
+
+3) Install MacTEX:  Any recent version should work
+https://tug.org/mactex/
+
+4) Install python libraries to read excel files: openpyxl 2.0.3 or later
+simply run: sudo easy_install openpyxl
+
+5) Install python libraries to read google docs: gdata 2.0.18 or later
+simply run: sudo easy_install gdata
+
+6) Link DPHSData to data:
+run: ln -s ~/Google\ Drive/DPHSData data
+
+Should be good to go.
+
+To run:
+./MakeTranscript -h

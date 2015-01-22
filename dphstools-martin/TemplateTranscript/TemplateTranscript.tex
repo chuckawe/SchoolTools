@@ -1,0 +1,130 @@
+\documentclass [] {report}
+\usepackage[portrait,lmargin=1cm,rmargin=1cm,tmargin=2cm,bmargin=2cm]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage[absolute]{textpos}
+\usepackage{caption}
+\usepackage{tabularx}
+
+\usepackage{booktabs}
+%\setlength{\heavyrulewidth}{0.12em}
+\captionsetup{format=plain,labelformat=empty,justification=centering, font=Large, aboveskip=1pt}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand*\footnoterule{}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Directory for graphics
+\graphicspath{{graphics/},{../graphics/}}
+
+\lhead{
+\begin{tabular}{l}
+LOGO
+\end{tabular}
+%\begin{tabular}{l l}
+%\multirow{6}{*}{\includegraphics[scale=0.3]{DPPS}} & \hspace{1pt} \\
+%& \sc{{\bf \large Democracy Prep Charter School}} \\
+%& 207 W. 133rd St. New York, NY 10037 \\
+%& (212) 281-1248 \\
+%&  Campus Director: Lisa Friscia\\
+%& \hspace{1pt}
+%\end{tabular}
+}
+
+%\chead{\Huge{\sc Official\\Transcript}}
+
+\rhead{
+\large
+\begin{tabular}{l l}
+Student Name: & FIRSTNAME LASTNAME \\
+Student ID: & STUID \\
+Grade: & GRADE \\
+DOB: & DATEOFBIRTH \\
+%Address: & STREET\\
+% &CITY, STATE ZIP \\
+\end{tabular}
+}
+
+%\cfoot{\textcolor{Goldenrod}{\it \Large Work Hard. Go to College Change the World}}
+\cfoot{
+%\begin{tabular}{c}
+SCHOOLADDRESS
+%Campus Director: Lisa Friscia\\
+%\end{tabular}
+}
+
+\begin{document}
+
+%WATERMARK
+
+
+% Official Transcript "Watermark"
+%\begin{textblock}{40}(1.0,5.0)
+%\includegraphics[]{OffTrans}
+%\end{textblock}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Coursework Portion of Transcript
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Header
+% Do not adjust Y position without adjusting examinations header as well
+%\begin{textblock}{width}(X,Y) 
+%\begin{textblock}{10}(4.5,2.8) % Use this for landscape layout
+\begin{textblock}{10}(6,2.0) % Use this for portrait layout
+{\huge Coursework}
+\end{textblock}
+
+% Each of the textblocks below correspond to a year in 
+% a student's academic record.
+
+\begin{textblock}{6.5}(1.0,2.5)
+%COURSEWORKYEAR0
+\end{textblock}
+
+\begin{textblock}{6.5}(8.5,2.5)
+%COURSEWORKYEAR1
+\end{textblock}
+
+\begin{textblock}{6.5}(1.0,6.5)
+%COURSEWORKYEAR2
+\end{textblock}
+
+\begin{textblock}{6.5}(8.5,6.5)
+%COURSEWORKYEAR3
+\end{textblock}
+
+%\begin{textblock}{7.5}(9.0,14.0)
+\begin{textblock}{7.5}(9.0,12.0)
+%COURSEWORKSUMMARY
+\end{textblock}
+
+%ELECTIVEFOOTNOTE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Examinations Portion of Transcript
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Header
+% Do not adjust Y position without adjusting coursework header as well
+%\begin{textblock}{width}(X,Y) 
+%\begin{textblock}{10}(12.25,2.8) % Use this for landscape layout
+%\begin{textblock}{10}(6,11) % Use this for portrait layout
+\begin{textblock}{10}(2.5,11) % Use this for portrait layout
+{\huge Examinations}
+\end{textblock}
+
+% Specific Exams
+% Expected: NYS Regents, AP, SAT and ACT
+
+%EXAMSBYTYPE
+
+
+
+\end{document}
